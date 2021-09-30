@@ -26,7 +26,7 @@ export class PlayerBall extends Ball {
             systemEvent.on(SystemEvent.EventType.MOUSE_MOVE, this.onMouseMoved, this);
             if (this.label != null)
             {
-                //this.label.string = NetworkManager.playerName;
+                this.label.string = NetworkManager.playerName;
             }
         }
         else
@@ -61,7 +61,7 @@ export class PlayerBall extends Ball {
             var dis = Vec3.distance(this.node.position, otherPlayer.node.position);
             if (dis < this.size)
             {
-                //NetworkManager.killPlayer(otherPlayer);
+                NetworkManager.killPlayer(otherPlayer);
                 this.size += otherPlayer.size / 6;
                 this.updateBall();
                 event.otherCollider.node.destroy();
@@ -70,14 +70,13 @@ export class PlayerBall extends Ball {
     }
 
     onMouseMoved(event: EventMouse) {
-        //if (NetworkManager.instance.player.pid != undefined)
-        //{
+        if (NetworkManager.instance.player.pid != undefined)
+        {
             var canvas = this.background.node.parent.getComponent(UITransform);
             var x = event.getLocationX() - canvas.width;
             var y = event.getLocationY() - canvas.height;
 
-            this.direction = new Vec2(x,y).normalize();
-            /*if (x != undefined)
+            if (x != undefined)
             {
                 var dir = new Vec2(x,y).normalize();
                 var json = JSON.stringify({
@@ -88,8 +87,8 @@ export class PlayerBall extends Ball {
                     posy: this.node.position.y
                 });
                 NetworkManager.ws.send(json);
-            }*/
-        //}
+            }
+        }
     }
 
     update (dt: number) {

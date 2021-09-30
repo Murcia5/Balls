@@ -10,17 +10,17 @@ export class NetworkManager extends Component {
     static players : Map<string, PlayerBall> = new Map<string, PlayerBall>();
     static instance : NetworkManager;
     static playerName : string;
-    static ipAddress : string = "localhost";
+    static ipAddress : string = "192.168.1.38";
 
     @property({type:PlayerBall}) player : PlayerBall;
     @property({type:Prefab}) playerBallPrefab : Prefab;
 
     start () {
         console.log("Player name = " + NetworkManager.playerName);
-        /*NetworkManager.instance = this;
+        NetworkManager.instance = this;
         NetworkManager.ws = new WebSocket("ws://" + NetworkManager.ipAddress + ":8080");
         NetworkManager.ws.onopen= this.onOpen;
-        NetworkManager.ws.onmessage= this.onMessage;*/
+        NetworkManager.ws.onmessage= this.onMessage;
     }
 
     static killPlayer(playerBall : PlayerBall)
