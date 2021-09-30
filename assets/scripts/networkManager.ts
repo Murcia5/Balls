@@ -17,10 +17,10 @@ export class NetworkManager extends Component {
 
     start () {
         console.log("Player name = " + NetworkManager.playerName);
-        NetworkManager.instance = this;
+        /*NetworkManager.instance = this;
         NetworkManager.ws = new WebSocket("ws://" + NetworkManager.ipAddress + ":8080");
         NetworkManager.ws.onopen= this.onOpen;
-        NetworkManager.ws.onmessage= this.onMessage;
+        NetworkManager.ws.onmessage= this.onMessage;*/
     }
 
     static killPlayer(playerBall : PlayerBall)
